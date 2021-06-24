@@ -121,7 +121,7 @@ class TableModel
 
     static function makeRoute($config)
     {
-        $route_url_prefix = config("artcrud.template_route.route_url_prefix") . $config['name_table'];
+        $route_url_prefix =  $config['name_table'];
         $route_name_prefix = config("artcrud.template_route.route_name_prefix") . "." . $config['name_table'];
         $route_function = file_get_contents(config("artcrud.template_route.template_path"));
         $route = file_get_contents(config("artcrud.template_route.route_store_path"));
