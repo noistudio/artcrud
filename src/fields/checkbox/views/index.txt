@@ -1,0 +1,1 @@
+ <td>@if($row->[name]==true) Да @else Нет  @endif</td>

@@ -1,0 +1,61 @@
+$request->validate([
+
+                                                '[name].*' => 'image|mimes:jpeg,png,jpg,gif,svg'
+                             ]);
+           if($request->hasfile('[name]'))
+                 {
+                    $result_[name]=array();
+                    foreach($request->file('[name]') as $image)
+                    {
+
+                            $img_name = "[name]";
+                           $imageName= time() . '.'.rand(0,999999) . $image->extension();
+                            $image->move(public_path(config("artcrud.public_path_for_files")), $imageName);
+                            $value_img = config("artcrud.public_path_for_files") . "/" . $imageName;
+                             $result_[name][]=$value_img;
+                    }
+
+                     if (isset($[name_table_little]->[name]) and is_array($[name_table_little]->[name]) and count($[name_table_little]->[name]) > 0) {
+                     foreach($[name_table_little]->[name] as $image_row){
+                     unlink(public_path($image_row));
+                     }
+
+                     }
+
+                    $[name_table_little]->[name]=$result_[name];
+                    $[name_table_little]->save();
+                 }else if(isset($[name_table_little]->[name]) and is_array($[name_table_little]->[name]) and count($[name_table_little]->[name])>0) {
+                              $tmp_[name]=$[name_table_little]->[name];
+                              $new_[name]=array();
+                              $new_sort_[name]=array();
+                              $post=request()->post();
+                              if(count($tmp_[name])){
+                                  foreach($tmp_[name] as $key_[name]=>$child_[name]){
+                                      if(isset($post['[name]_number_'.$key_[name]]) and is_numeric($post['[name]_number_'.$key_[name]]) and isset($tmp_[name][$post['[name]_number_'.$key_[name]]])){
+                                          $new_[name][(int)$post['[name]_number_'.$key_[name]]]=$child_[name];
+                                      }
+                                  }
+
+
+
+                                  $i=0;
+                                  foreach($tmp_[name] as $key_[name]=>$child_[name]){
+                                      $new_sort_[name][]=$new_[name][$i];
+                                      $i++;
+                                  }
+
+
+
+                                  $[name_table_little]->[name]=$new_sort_[name];
+                                  $[name_table_little]->save();
+                              }
+
+                          }
+
+
+
+
+
+
+
+

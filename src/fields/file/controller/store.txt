@@ -1,0 +1,15 @@
+$request->validate([
+                                 "[name]"=> 'required',
+                             ]);
+                             $file_name_[name] = "[name]";
+                             $fileName_[name] = time() . '.' .rand(0,99999). $request->$file_name_[name]->extension();
+                             $request->$file_name_[name]->move(public_path(config("artcrud.public_path_for_files")), $fileName_[name]);
+                             $value_file_[name] = config("artcrud.public_path_for_files") . "/" . $fileName_[name];
+
+                             $[name_table_little]->[name]=$value_file_[name];
+                             $[name_table_little]->save();
+
+
+
+
+

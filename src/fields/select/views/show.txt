@@ -1,0 +1,6 @@
+<div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>[field.title]:</strong>{{ $[name_table_little]->[name]_row->[data_title] }}
+
+            </div>
+        </div>

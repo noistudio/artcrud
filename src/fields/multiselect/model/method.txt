@@ -1,0 +1,5 @@
+public function [name]_rows()
+    {
+        return $this->hasMany([data_model2]::class,"id_[name_table_little]","id");
+    }
+

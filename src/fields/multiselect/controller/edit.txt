@@ -1,0 +1,2 @@
+$data_edit['[data_table]'] = [data_model]::query()->get();
+$data_edit['choosed_[name]'] = [data_model2]::query()->where("id_[name_table_little]", $[name_table_little]->id)->get()->keyBy("id_[data_table]");

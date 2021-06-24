@@ -1,0 +1,23 @@
+if($request->hasfile('[name]')){
+$request->validate([
+                                 "[name]" => 'required',
+                             ]);
+                             $file_name_[name] = "[name]";
+                             $fileName_[name] = time() . '.'.rand(0,99999) . $request->$file_name_[name]->extension();
+                             $request->$file_name_[name]->move(public_path(config("artcrud.public_path_for_files")), $fileName_[name]);
+                             $value_file_[name] = config("artcrud.public_path_for_files") . "/" . $fileName_[name];
+
+                               if (isset($[name_table_little]->[name]) and strlen($[name_table_little]->[name]) > 0) {
+                                 if(file_exists(public_path($[name_table_little]->[name]))){
+                                                              unlink(public_path($[name_table_little]->[name]));
+                                                              }
+                                }
+
+                             $[name_table_little]->[name]=$value_file_[name];
+                             $[name_table_little]->save();
+ }
+
+
+
+
+

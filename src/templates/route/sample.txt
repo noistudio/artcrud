@@ -1,0 +1,16 @@
+Route::resource('[url]', [namespace_controller]::class)->names(
+    ['index' => '[name].index',
+        'create' => '[name].create',
+        'store' => '[name].store',
+        'show' => '[name].show',
+        'edit' => '[name].edit',
+        'update' => '[name].update',
+        'destroy'=>'[name].destroy',
+    ]
+)->parameters([
+     '[name_table_little]' => '[name_table_little]'
+ ]);
+
+Route::get("[url]/change_pos/{id}",[[namespace_controller]::class,"change_position"])->name("[name].change");
+Route::get("[url]/clone/{id}",[[namespace_controller]::class,"clone_object"])->name("[name].clone");
+Route::get("[url]/toogle/{id}",[[namespace_controller]::class,"toogle"])->name("[name].toogle");

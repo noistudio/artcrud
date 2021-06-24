@@ -1,0 +1,8 @@
+<td>
+   @if(isset($row->[name]) and is_array($row->[name]) and count($row->[name])>0)
+                     @foreach($row->[name] as $file)
+                     <br>
+                     <p><a target="_blank" href="{{ url($file['file']) }}">{{ $file['name'] }}</a></p>
+                     <br>
+                     @endforeach
+                     @endif</td>

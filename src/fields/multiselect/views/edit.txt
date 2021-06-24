@@ -1,0 +1,14 @@
+       <div class="col-xs-12 col-sm-12 col-md-12 mb-2 mt-2 row">
+        <div class="col-4">
+                           <strong>[field.title]:</strong>
+                       </div>
+                <div class="col-7">
+
+                    <select name="[name][]" multiple data-title="[field.title]" class="crud_field_[name] form-control">
+                        @foreach($[name] as $row)
+                            <option @if(isset($choosed_[name][$row->id])) selected @endif  value="{{ $row->id }}">{{ $row->[data_title] }}</option>
+                        @endforeach
+                    </select>
+
+                </div>
+            </div>

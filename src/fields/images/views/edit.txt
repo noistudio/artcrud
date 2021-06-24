@@ -1,0 +1,14 @@
+<div class="col-xs-12 col-sm-12 col-md-12 mb-2 mt-2 row">
+                <div class="col-4">
+                    <strong>[field.title]:</strong>
+                    @if(isset($[name_table_little]->[name]) and is_array($[name_table_little]->[name]) and count($[name_table_little]->[name])>0)
+                    @foreach($[name_table_little]->[name] as $key=>$image)
+                    <br>
+                    <p><input type="number" name="[name]_number_{{$key}}" class="form-control" value="{{ $key }}"><img src="{{ url($image) }}" class="img img-thumbnail"></p>
+                    @endforeach
+                    @endif
+                </div>
+                <div class="col-7">
+                    <input type="file" name="[name][]" multiple   data-title="[field.title]" class="crud_field_[name] form-control" placeholder="[field.title]">
+                </div>
+            </div>

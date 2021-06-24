@@ -1,0 +1,6 @@
+Schema::create("%name_table_new%", function (Blueprint $table) {
+            $table->id();
+            $table->integer("id_[data_table]");
+            $table->integer("id_[name_table_little]");
+            $table->timestamps();
+        });

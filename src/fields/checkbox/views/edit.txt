@@ -1,0 +1,8 @@
+<div class="col-xs-12 col-sm-12 col-md-12 mb-2 mt-2 row">
+ <div class="col-4">
+                    <strong>[field.title]:</strong>
+                </div>
+                <div class="col-7">
+                    <input type="checkbox" name="[name]" @if($[name_table_little]->[name]==true)  checked @endif    value="1" data-title="[field.title]" class="crud_field_[name] " placeholder="[field.title]">
+                </div>
+            </div>

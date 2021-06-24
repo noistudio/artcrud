@@ -1,0 +1,9 @@
+<div class="col-xs-12 col-sm-12 col-md-12 mb-2 mt-2 row">
+                <div class="col-4">
+                    <strong>[field.title]:</strong>
+                </div>
+                <div class="col-7">
+
+                    <input type="file" name="[name][]" multiple value="" data-title="[field.title]" class="crud_field_[name] form-control"  placeholder="[field.title]">
+                </div>
+</div>

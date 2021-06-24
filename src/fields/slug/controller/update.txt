@@ -1,0 +1,2 @@
+ $[name_table_little]->[name]=request()->post('[name]');
+ $[name_table_little]->save();

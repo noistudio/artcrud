@@ -1,0 +1,1 @@
+ <td><a href="{{ url($row->[name]) }}" target="_blank">Скачать файл</a></td>

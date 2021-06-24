@@ -1,0 +1,21 @@
+$[name]_field = request()->post("[name]");
+        $[name]_inserted = 0;
+        [data_model2]::query()->where("id_[name_table_little]", $[name_table_little]->id)->delete();
+        if (isset($[name]_field) and count($[name]_field) > 0) {
+            foreach ($[name]_field as $[name]_arr) {
+                $[name]_row = [data_model]::query()->find($[name]_arr);
+                if (isset($[name]_row)) {
+                    $tmp_[name]_new = new [data_model2];
+                    $tmp_[name]_new->id_[data_table] = $[name]_row->id;
+                    $tmp_[name]_new->id_[name_table_little] = $[name_table_little]->id;
+                    $tmp_[name]_new->save();
+                    $[name]_inserted++;
+                }
+            }
+        }
+
+
+        if ($[name]_inserted == 0) {
+            return response()->json(['errors' => ['[name]' => ['Вы не выбрали ни одного варианта.']]], 422);
+
+        }

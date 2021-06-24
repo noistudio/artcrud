@@ -1,0 +1,5 @@
+  <td>  @if($row->[name]_rows->count()>0)
+                        @foreach($row->[name]_rows as $[name]_one)
+                            <b>{{ $[name]_one->[name]_row->[data_title]  }}</b>,
+                        @endforeach
+                    @endif</td>

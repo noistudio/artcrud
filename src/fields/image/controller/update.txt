@@ -1,0 +1,22 @@
+if($request->hasfile('[name]')){
+$request->validate([
+                                 "[name]" => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+                             ]);
+                             $img_name_[name] = "[name]";
+                             $imageName_[name] = time() . '.'.rand(0,99999) . $request->$img_name_[name]->extension();
+                             $request->$img_name_[name]->move(public_path(config("artcrud.public_path_for_files")), $imageName_[name]);
+                             $value_img_[name] = config("artcrud.public_path_for_files") . "/" . $imageName_[name];
+
+                               if (isset($[name_table_little]->[name]) and strlen($[name_table_little]->[name]) > 0) {
+                               if(file_exists(public_path($[name_table_little]->[name]))){
+                                                              unlink(public_path($[name_table_little]->[name]));
+                                                              }
+                                }
+
+                             $[name_table_little]->[name]=$value_img_[name];
+                             $[name_table_little]->save();
+}
+
+
+
+

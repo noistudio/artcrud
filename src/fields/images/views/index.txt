@@ -1,0 +1,8 @@
+<td>
+   @if(isset($row->[name]) and is_array($row->[name]) and count($row->[name])>0)
+                     @foreach($row->[name] as $image)
+                     <br>
+                     <p><img style='max-width:100px;' src="{{ url($image) }}" class="img-thumbnail"></p>
+                     <br>
+                     @endforeach
+                     @endif</td>

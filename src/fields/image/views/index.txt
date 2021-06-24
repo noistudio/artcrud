@@ -1,0 +1,1 @@
+ <td><img style='max-width:100px;' src="{{ url($row->[name]) }}" class="img-thumbnail"></td>

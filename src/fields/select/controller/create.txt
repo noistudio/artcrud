@@ -1,0 +1,1 @@
+$data_create['[data_table]'] = [data_model]::query()->get();

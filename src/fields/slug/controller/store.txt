@@ -1,0 +1,2 @@
+ $[name_table_little]->[name]=Str::slug($[name_table_little]->[field.slug_field]);
+ $[name_table_little]->save();

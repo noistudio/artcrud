@@ -1,0 +1,1 @@
+ <td>{{ $row->[name]_row->[data_title] }}</td>
