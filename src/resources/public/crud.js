@@ -40,7 +40,7 @@ $(document).ready(function () {
         });
         return false;
     });
-    $("body").on("click",".js_put_row_down",function(){
+    $(".js_put_row_down").on("click",function(){
 
         var this_row = $(this).closest('tr');
         var current_sort=this_row.data("sort");
@@ -76,7 +76,7 @@ $(document).ready(function () {
         });
         return false;
     });
-    $("body").on("click",".js_put_row_up",function(){
+    $(".js_put_row_up").on("click",function(){
 
         var this_row = $(this).closest('tr');
         var current_sort=this_row.data("sort");
