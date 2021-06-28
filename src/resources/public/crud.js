@@ -23,7 +23,7 @@ $(document).ready(function () {
         // myModal.show();
         return false;
     });
-    $(".delete_row_btn").on("click",".delete_row_btn",function(){
+    $("body").on("click",".delete_row_btn",function(){
         var id=$(this).data("row-id");
 
         $(".delete_"+id).submit();
