@@ -90,6 +90,8 @@ class [name_table]Controller extends Controller
     }
     $new_obj=$[name_table_little]->replicate();
     $new_obj->save();
+    $new_obj->sort=$new_obj->id;
+    $new_obj->save();    
 
     return back()->with("success","Клонирование прошло успешно!");
 }
