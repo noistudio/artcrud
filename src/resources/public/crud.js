@@ -13,6 +13,13 @@ $(document).ready(function () {
                 $(".additional_fields").append(data);
             });
     });
+       $(".delete_all").on("click",function(){
+
+       $(".delete_form_all").submit();
+
+       return false;
+
+     });
 
     $("body").on("click",".delete_row",function(){
         var id=$(this).data("row-id");
