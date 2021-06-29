@@ -51,6 +51,7 @@ $(document).ready(function () {
         var next=this_row.next('tr');
         var replace_sort=next.data("sort");
         $.get( url_change+"?current="+current_sort+"&replace="+replace_sort, function( data ) {
+             this_row.data("sort",replace_sort);
 
         });
 
@@ -88,7 +89,7 @@ $(document).ready(function () {
         var replace_sort=next.data("sort");
         if(replace_sort) {
             $.get(url_change + "?current=" + current_sort + "&replace=" + replace_sort, function (data) {
-
+             this_row.data("sort",replace_sort);
             });
         }
 
