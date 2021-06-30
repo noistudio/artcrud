@@ -6,7 +6,7 @@
                     {
 
                             $file_name = "[name]";
-                           $fileName= time() . '.'.rand(0,999999) . $file->extension();
+                           $fileName= time() . '.'.rand(0,999999) .".". $file->extension();
                             $file->move(public_path(config("artcrud.public_path_for_files")), $fileName);
                             $value_file = config("artcrud.public_path_for_files") . "/" . $fileName;
                             $result_[name][]=array('file'=>$value_file,'name'=>$file->getClientOriginalName());
