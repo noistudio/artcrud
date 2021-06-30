@@ -9,7 +9,7 @@ $request->validate([
                     {
 
                             $img_name = "[name]";
-                           $imageName= time() . '.'.rand(0,999999) . $image->extension();
+                           $imageName= time() . '.'.rand(0,999999) . ".".$image->extension();
                             $image->move(public_path(config("artcrud.public_path_for_files")), $imageName);
                             $value_img = config("artcrud.public_path_for_files") . "/" . $imageName;
                              $result_[name][]=$value_img;
