@@ -68,6 +68,10 @@ class NumberfloatField
         return $result;
 
     }
+    public function getRequestUpdateValidate(){
+        $result=" '".$this->config['name']."' => ['required','numeric',";
+        return $result;
+    }
 
     public function getTemplateCreate(){
         $path_to_create=__DIR__."/views/create.txt";

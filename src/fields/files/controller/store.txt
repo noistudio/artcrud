@@ -1,6 +1,6 @@
 $request->validate([
                                    '[name]' => 'required',
-                                                '[name].*' => 'image|mimes:jpeg,png,jpg,gif,svg'
+                                                
                              ]);
            if($request->hasfile('[name]'))
                  {

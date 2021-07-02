@@ -69,6 +69,12 @@ class NumberField
 
     }
 
+    public function getRequestUpdateValidate(){
+        $result=" '".$this->config['name']."' => ['required','integer',";
+        return $result;
+    }
+    
+
     public function getTemplateCreate(){
         $path_to_create=__DIR__."/views/create.txt";
         $result=file_get_contents($path_to_create);

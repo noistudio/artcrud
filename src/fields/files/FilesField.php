@@ -87,8 +87,15 @@ class FilesField
 
 
     public function getRequestValidate(){
-        return null;
+        $result="'".$this->config['name']."' => ['required',";
+        return $result;
 
+
+    }
+
+    public function getRequestUpdateValidate(){
+
+        return null;
     }
 
     public function getTemplateCreate(){

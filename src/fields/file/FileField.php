@@ -92,9 +92,17 @@ class FileField
 
 
     public function getRequestValidate(){
-        return null;
+        $result="'".$this->config['name']."' => ['required',";
+        return $result;
+
 
     }
+
+    public function getRequestUpdateValidate(){
+
+        return null;
+    }
+  
 
     public function getTemplateCreate(){
         $path_to_create=__DIR__."/views/create.txt";

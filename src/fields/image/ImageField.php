@@ -92,8 +92,15 @@ class ImageField
 
 
     public function getRequestValidate(){
-        return null;
+        $result="'".$this->config['name']."' => ['image','mimes:jpeg,png,jpg,gif,svg',";
+        return $result;
 
+
+    }
+
+    public function getRequestUpdateValidate(){
+
+        return null;
     }
 
     public function getTemplateCreate(){

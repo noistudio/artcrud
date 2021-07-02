@@ -22,7 +22,7 @@ class SelectField
         $this->setFieldConfig("data_title", "string");
         $this->setFieldConfig("data_primary_key", "string");
         if (isset($this->config['data_table'])) {
-            $this->config['data_model'] = "\\" . config("admin.template_model.new_name_space") . "\\" . ucfirst($this->config['data_table']);
+            $this->config['data_model'] = "\\" . config("artcrud.template_model.new_name_space") . "\\" . ucfirst($this->config['data_table']);
 
         }
     }
@@ -79,6 +79,13 @@ class SelectField
         ";
         return $result;
 
+    }
+
+    public function getRequestUpdateValidate(){
+        $result = "  '" . $this->config['name'] . "' => ['required','exists:" . $this->config['data_table'] . "," . $this->config['data_primary_key'] . "',
+
+        ";
+        return $result;
     }
 
     public function getTemplateCreate()

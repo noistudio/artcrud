@@ -17,6 +17,13 @@
             </div>
 
             <div class="mb-3">
+                <label for="exampleInputEmail22" class="form-label">Запуск миграций</label>
+                <input type="checkbox" checked   value="1" name="start_migrate" id="exampleInputEmail22">
+
+            </div>
+
+
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Поля</label>
                 <select class="form-control field_add" name="fields">
                     <option></option>

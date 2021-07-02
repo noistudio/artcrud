@@ -65,6 +65,10 @@ class TextareaField
        return null;
 
     }
+    
+    public function getRequestUpdateValidate(){
+        return null;
+    }
 
     public function getTemplateCreate(){
         $path_to_create=__DIR__."/views/create.txt";

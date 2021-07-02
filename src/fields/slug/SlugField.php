@@ -70,6 +70,9 @@ class SlugField
     public function getRequestValidate(){
        return null;
     }
+    public function getRequestUpdateValidate(){
+        return null;
+    }
 
     public function getTemplateCreate(){
 

@@ -67,8 +67,11 @@ class TableModel
 
         $path_to_migrations = base_path("database/migrations");
         file_put_contents($path_to_migration, $content_migration);
-        Artisan::call('migrate');
-        print(" migration success creating \n");
+        if(isset($config['start_migrate'])){
+            Artisan::call('migrate');
+            print(" migration success creating \n");
+        }
+
         return true;
 
 
@@ -102,7 +105,7 @@ class TableModel
                 $field->createModel();
             }
             if(method_exists($field,"getModelCastField")){
-                $casts_field.=$field->getModelCastField();
+                $casts_field.=$field->getModelCastField().",";
             }
 
 
@@ -181,22 +184,38 @@ class TableModel
         foreach ($config['fields'] as $field_row) {
             $field = new $field_row['class']($field_row,$config);
             $tmp_validate=$field->getRequestValidate();
+            $tmp_validate_update=$field->getRequestUpdateValidate();
+
+
             if(!is_null($tmp_validate)) {
                 $field_validate_create=$field->getRequestValidate();
-                $field_validate_update=$field_validate_create;
+                //  $field_validate_update=$field_validate_create;
                 if(isset($field_row['unique'])){
-                    $field_validate_update.='Rule::unique("'.$config['name_table'].'")->ignore($'.$config['name_table'].'->id),';
+                    // $field_validate_update.='Rule::unique("'.$config['name_table'].'")->ignore($'.$config['name_table'].'->id),';
                     $field_validate_create.='"unique:'.$namespace_model.','.$field_row['name'].'",';
                 }
                 $field_validate_create.="],";
-                $field_validate_update.="],";
+                //    $field_validate_update.="],";
                 $request_validate_create .= $field_validate_create;
+                //    $request_validate_update.=$field_validate_update;
+            }
+
+            if(!is_null($tmp_validate_update)) {
+                $field_validate_update=$field->getRequestUpdateValidate();
+                //$field_validate_update=$field_validate_create;
+                if(isset($field_row['unique'])){
+                    $field_validate_update.='Rule::unique("'.$config['name_table'].'")->ignore($'.$config['name_table'].'->id),';
+                    // $field_validate_create.='"unique:'.$namespace_model.','.$field_row['name'].'",';
+                }
+                // $field_validate_create.="],";
+                $field_validate_update.="],";
+                //  $request_validate_create .= $field_validate_create;
                 $request_validate_update.=$field_validate_update;
             }
             $tmp_create=$field->getDataCreate();
             $tmp_edit=$field->getDataEdit();
             if(!is_null($tmp_create)){
-              $data_create.=$tmp_create;
+                $data_create.=$tmp_create;
             }
             if(!is_null($tmp_edit)){
                 $data_edit.=$tmp_edit;
@@ -351,6 +370,10 @@ class TableModel
         file_put_contents($show_to_view, $show);
         print($show_to_view . " success generate!\n");
 
+        if(!isset($config['start_migrate'])){
+            // Artisan::call('migrate');
+            print(" for create tables running migrate \n");
+        }
         return true;
     }
 
