@@ -45,6 +45,9 @@ class FieldModel
         $result_array = array();
         $result_array['name_table'] = $post['name_table'];
         $result_array['title_table'] = $post['title_table'];
+        if(isset($post['start_migrate'])){
+            $result_array['start_migrate']=1;
+        }
         $result_array['fields'] = array();
         if (isset($post['fields']) and is_array($post['fields']) and count($post['fields']) > 0) {
             foreach ($post['fields'] as $field) {
