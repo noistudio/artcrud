@@ -1,16 +1,19 @@
-Route::resource('[url]', [namespace_controller]::class)->names(
-    ['index' => '[name].index',
-        'create' => '[name].create',
-        'store' => '[name].store',
-        'show' => '[name].show',
-        'edit' => '[name].edit',
-        'update' => '[name].update',
-        'destroy'=>'[name].destroy',
-    ]
-)->parameters([
-     '[name_table_little]' => '[name_table_little]'
- ]);
+Route::prefix("[url]")->group(function () {
 
-Route::get("[url]/change_pos/{id}",[[namespace_controller]::class,"change_position"])->name("[name].change");
-Route::get("[url]/clone/{id}",[[namespace_controller]::class,"clone_object"])->name("[name].clone");
-Route::get("[url]/toogle/{id}",[[namespace_controller]::class,"toogle"])->name("[name].toogle");
+Route::get("/index",[[namespace_controller]::class,"index"])->name("[name].index");
+Route::get("/create",[[namespace_controller]::class,"create"])->name("[name].create");
+Route::get("/delete_all",[[namespace_controller]::class,"delete_all"])->name("[name].delete_all");
+Route::get("/show/{id}",[[namespace_controller]::class,"show"])->name("[name].show");
+Route::post("/store",[[namespace_controller]::class,"store"])->name("[name].store");
+Route::get("/edit/{id}",[[namespace_controller]::class,"edit"])->name("[name].edit");
+Route::any("/update/{id}",[[namespace_controller]::class,"update"])->name("[name].update");
+Route::any("/destroy/{id}",[[namespace_controller]::class,"destroy"])->name("[name].destroy");
+
+
+Route::get("/change_pos/{id}",[[namespace_controller]::class,"change_position"])->name("[name].change");
+Route::get("/clone/{id}",[[namespace_controller]::class,"clone_object"])->name("[name].clone");
+Route::get("/toogle/{id}",[[namespace_controller]::class,"toogle"])->name("[name].toogle");
+
+});
+
+
