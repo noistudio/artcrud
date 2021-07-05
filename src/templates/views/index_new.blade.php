@@ -120,7 +120,7 @@
                         </button>
                     </form>
                 @endforeach
-                <form class="delete_form_all" action="" method="GET">
+                <form class="delete_form_all" action="{{ route('[ROUTE_NAME].delete_all') }}" method="GET">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
