@@ -20,16 +20,24 @@ class [name_table]Controller extends Controller
      */
 
 
+    public function delete_all(){
+    $request_all=request()->all();
+
+    if(isset($request_all['id']) and is_array($request_all['id'])){
+        [name_table]::query()->whereIn("id",$request_all['id'])->delete();
+        return back();
+    }
+
+
+
+    }
+
     public function index()
 {
     //
     $request_all=request()->all();
 
-    $route_name=Route::currentRouteName();
-    if(isset($request_all['id']) and is_array($request_all['id'])){
-        [name_table]::query()->whereIn("id",$request_all['id'])->delete();
-        return redirect()->route($route_name);
-    }
+
 
     $[name_table_little]=[name_table]::query()->where(function($query) use ($request_all){
         if(isset($request_all['enable']) and $request_all['enable']==1){
@@ -91,7 +99,7 @@ class [name_table]Controller extends Controller
     $new_obj=$[name_table_little]->replicate();
     $new_obj->save();
     $new_obj->sort=$new_obj->id;
-    $new_obj->save();    
+    $new_obj->save();
 
     return back()->with("success","Клонирование прошло успешно!");
 }
@@ -168,10 +176,16 @@ class [name_table]Controller extends Controller
      * @param  [namespace_model]  $[name_table_little]
      * @return \Illuminate\Http\Response
      */
-    public function show([name_table] $[name_table_little])
+    public function show($id)
     {
+        $[name_table_little]=[name_table]::query()->find($id);
+        if(!$[name_table_little]){
+            return abort(404);
+        }
         //
-        return view('[VIEW_SHOW]', compact('[name_table_little]'));
+        $data=array();
+        $data['[name_table_little]']=$[name_table_little];
+        return view('[VIEW_SHOW]', $data);
     }
 
     /**
@@ -180,8 +194,12 @@ class [name_table]Controller extends Controller
      * @param  [namespace_model]  $[name_table_little]
      * @return \Illuminate\Http\Response
      */
-    public function edit([name_table] $[name_table_little])
+    public function edit($id)
     {
+        $[name_table_little]=[name_table]::query()->find($id);
+        if(!$[name_table_little]){
+            return abort(404);
+        }
         //
         $data_edit=array();
         $data_edit['[name_table_little]']=$[name_table_little];
@@ -196,8 +214,13 @@ class [name_table]Controller extends Controller
      * @param  [namespace_model]  $[name_table_little]
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, [name_table] $[name_table_little])
+    public function update($id)
     {
+        $[name_table_little]=[name_table]::query()->find($id);
+        if(!$[name_table_little]){
+            return abort(404);
+        }
+        $request=request();
         //
         // custom error
         //  return response()->json(['errors' => ['email' => ['The email is invalid.']]], 422);
@@ -225,8 +248,12 @@ class [name_table]Controller extends Controller
      * @param  [namespace_model]  $[name_table_little]
      * @return \Illuminate\Http\Response
      */
-    public function destroy([name_table] $[name_table_little])
+    public function destroy($id)
     {
+        $[name_table_little]=[name_table]::query()->find($id);
+        if(!$[name_table_little]){
+            return abort(404);
+        }
         //
         $[name_table_little]->delete();
 
