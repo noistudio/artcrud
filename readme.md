@@ -1,4 +1,4 @@
-dev-version
+dev-version is upd
 
 1. composer require noistudio/artcrud
 2. publish files from packages php artisan vendor:publish --tag=artcrud
