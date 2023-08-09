@@ -153,7 +153,13 @@ class [name_table]Controller extends Controller
 
         ]);
 
-        $[name_table_little]=[name_table]::create($validated);
+        $[name_table_little]=new [name_table]();
+         if(count($validated)>0){
+             foreach($validated as $name_field=>$val){
+                 $[name_table_little]->$name_field=$val;
+             }
+        }
+        
         $[name_table_little]->sort=$[name_table_little]->id;
 
 
